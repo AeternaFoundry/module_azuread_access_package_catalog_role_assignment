@@ -5,12 +5,24 @@ Required:
     - catalog_id
     - principal_object_id
     - role_id
+Optional:
+    - timeouts (block):
+        - create (optional)
+        - delete (optional)
+        - read (optional)
+        - update (optional)
 EOT
 
   type = map(object({
     catalog_id          = string
     principal_object_id = string
     role_id             = string
+    timeouts = optional(object({
+      create = optional(string)
+      delete = optional(string)
+      read   = optional(string)
+      update = optional(string)
+    }))
   }))
   validation {
     condition = alltrue([
